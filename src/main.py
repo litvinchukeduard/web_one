@@ -93,11 +93,11 @@ class User:
         return User.user_id
 
     def __str__(self):
-        return f'First name - {self.first_name}, last name - {self.last_name}, id - {self._id} '
+        return f'First name - {self.first_name}, last name - {self.last_name}, id - {self.user_id} '
     
 
     def __repr__(self):
-        return f'First name - {self.first_name}, last name - {self.last_name}, id - {self._id} '
+        return f'First name - {self.first_name}, last name - {self.last_name}, id - {self.user_id} '
 
 
 questionare = Questionnaire('Hello', [])
@@ -129,6 +129,7 @@ users_list = []
 def add_users(first_name, last_name):
     user = User(first_name, last_name)
     user.create_id()
+    print(user)
     users_list.append(user)
 
 
