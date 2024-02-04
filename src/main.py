@@ -79,13 +79,18 @@ class Questionnaire:
         return f'Questionaire name: {self.name}, Questions: {questions_str}'
     
 
-class Users:
+class User:
+    
+    user_id = 0
 
-    def __init__(self, first_name, last_name, _id):
+    def __init__(self, first_name, last_name):
         self.first_name = first_name
         self.last_name = last_name
-        self._id = _id
-
+        
+    
+    def create_id(self):
+        User.user_id =User.user_id + 1
+        return User.user_id
 
     def __str__(self):
         return f'First name - {self.first_name}, last name - {self.last_name}, id - {self._id} '
@@ -101,6 +106,17 @@ questionare = Questionnaire('Hello', [])
 def add_question(question_text):
     question_id = questionare.number_of_questions() + 1
     questionare.add_question(question_id, question_text)
+
+
+'''Створіть метод, який буде приймати імʼя та прізвище та додавати нового користувача,
+створюючи йому унікальний ідентифікатор по порядку (Якщо останній 1, то наступний 2, …)'''
+list_of_users = []
+
+
+def add_user(first_name, last_name):
+    new_user = User(first_name, last_name)
+    new_user.create_id()
+    list_of_users.append(new_user)
 
 
 
