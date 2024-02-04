@@ -77,7 +77,7 @@ class Questionnaire:
     def __repr__(self) -> str:
         questions_str = ', '.join(self.questions)
         return f'Questionaire name: {self.name}, Questions: {questions_str}'
-    
+
 
 class User:
     
@@ -100,22 +100,11 @@ class User:
         return f'First name - {self.first_name}, last name - {self.last_name}, id - {self._id} '
 
 
-
 questionare = Questionnaire('Hello', [])
 
 def add_question(question_text):
     question_id = questionare.number_of_questions() + 1
     questionare.add_question(question_id, question_text)
-
-
-
-list_of_users = []
-
-
-def add_user(first_name, last_name):
-    new_user = User(first_name, last_name)
-    new_user.create_id()
-    list_of_users.append(new_user)
 
 
 def add_answer_to_question(question: str, answer: str, is_correct: bool) -> None:
