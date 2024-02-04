@@ -16,6 +16,9 @@ class Questionnaire:
         self.name = name
         self.questions = questions
 
+    def add_question(self, _id, question_text):
+        question = Q
+
     def __str__(self) -> str:
         questions_str = ', '.join(self.questions)
         return f'Questionaire name: {self.name}, Questions: {questions_str}'

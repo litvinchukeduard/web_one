@@ -36,7 +36,7 @@ class Question:
     def __init__(self,
                  id_: str | int,
                  text: str,
-                 answers: List[Answer]):
+                 answers: List[Answer] = []):
         self.id_ = id_
         self.text = text
         self.answers = answers
@@ -57,6 +57,34 @@ class Question:
     def del_answer(self, answer: Answer):
         for index, answer in enumerate(self.answers):
             pass
+
+class Questionnaire:
+
+    def __init__(self, name, questions):
+        self.name = name
+        self.questions = questions
+
+    def add_question(self, _id, question_text):
+        self.questions.append(Question(_id, question_text))
+
+    def number_of_questions(self):
+        return len(self.questions)
+
+    def __str__(self) -> str:
+        questions_str = ', '.join(self.questions)
+        return f'Questionaire name: {self.name}, Questions: {questions_str}'
+    
+    def __repr__(self) -> str:
+        questions_str = ', '.join(self.questions)
+        return f'Questionaire name: {self.name}, Questions: {questions_str}'
+
+
+questionare = Questionnaire('Hello', [])
+
+def add_question(question_text):
+    question_id = questionare.number_of_questions() + 1
+    questionare.add_question(question_id, question_text)
+
 
 
 if __name__ == '__main__':
