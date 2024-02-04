@@ -110,6 +110,8 @@ def add_answer_to_question(question: str, answer: str, is_correct: bool) -> None
             for answer_entry in entry.answers:
                 if answer_entry.text == answer:
                     return
+            if len(answer_ids) == len(entry.answers):
+                return
             answer_id = answer_ids[len(entry.answers)]
             answer_to_add = Answer(id_=answer_id,
                                    text=answer,
