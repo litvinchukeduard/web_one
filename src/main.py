@@ -17,16 +17,18 @@ class Answer:
 
 
 class UserAnswer:
-	def __init__(self, user_id, question_id, answer_id):
-		self.user_id = user_id
-		self.question_id = question_id
-		self.answer_id = answer_id
-              
-		
+    def __init__(self, user_id, question_id, answer_id):
+        self.user_id = user_id
+        self.question_id = question_id
+        self.answer_id = answer_id
+
     def __str__(self):
-        return f''
-	
-	
+        return f'User id: {self.user_id}, Question id: {self.question_id}, Answer: {self.answer_id}'
+    
+    def __repr__(self):
+        return f'User id: {self.user_id}, Question id: {self.question_id}, Answer: {self.answer_id}'
+    
+    
 
 
 
