@@ -124,6 +124,13 @@ def add_answer_to_question(question: str, answer: str, is_correct: bool) -> None
             return
 
 
+users_list = []
+
+def add_users(first_name, last_name):
+    user = User(first_name, last_name)
+    user.create_id()
+    users_list.append(user)
+
 
 if __name__ == '__main__':
     print("Hello world!")
