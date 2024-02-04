@@ -1,4 +1,5 @@
 from typing import List
+from flask import Flask, request
 
 
 class Answer:
@@ -137,5 +138,32 @@ def add_users(first_name, last_name):
     print(user)
     users_list.append(user)
 
+app = Flask(__name__)
+
+
+@app.route('/')
+def hello():
+    return "Hello World!"
+
+@app.route('/questions')
+def get_questions():
+    # Get information about questions
+    return str(questionare.questions)
+
+
+@app.route('/questions', methods=['POST'])
+def web_add_question():
+    # Create a new question
+    question_text = request.get_json()["questions_text"]
+    add_question(question_text)
+    return "Question added <b> Hello </b>"
+
+@app.route('/answer', methods=['POST'])
+def web_add_answer():
+    # Create a new question
+    answer_text = request.get_json()["answer_text"]
+    add_question(answer_text)
+    return "Question added"
+
 if __name__ == '__main__':
-    print('Hello!')
+    app.run(debug=False, host='0.0.0.0')
