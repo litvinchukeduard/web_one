@@ -102,12 +102,7 @@ def add_question(question_text):
     question_id = questionare.number_of_questions() + 1
     questionare.add_question(question_id, question_text)
 
-"""
-Створіть метод, який буде приймати текст питання та текст відповіді. І буде: 
-Шукати по списку питань питання щоб знайти питання з таким текстом
-Задасть новій відповіді ідентифікатор варіанту по порядку (якщо останній це А, то задавати Б, …) 
-Додасть варіант відповіді до знайденого питання.
-"""
+
 def add_answer_to_question(question: str, answer: str, is_correct: bool) -> None:
     answer_ids = "АБВГҐДЕЄЖЗИІЇЙКЛМНОПРСТУФХЦЧШЩЮЯ"
     for entry in questionare.questions:
@@ -115,6 +110,8 @@ def add_answer_to_question(question: str, answer: str, is_correct: bool) -> None
             for answer_entry in entry.answers:
                 if answer_entry.text == answer:
                     return
+            if len(answer_ids) == len(entry.answers):
+                return
             answer_id = answer_ids[len(entry.answers)]
             answer_to_add = Answer(id_=answer_id,
                                    text=answer,
