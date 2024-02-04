@@ -60,7 +60,7 @@ class Question:
 
 class Questionnaire:
 
-    def __init__(self, name, questions):
+    def __init__(self, name, questions: List[Question] = []):
         self.name = name
         self.questions = questions
 
@@ -101,8 +101,27 @@ def add_question(question_text):
     question_id = questionare.number_of_questions() + 1
     questionare.add_question(question_id, question_text)
 
+
 def create_questionnaire(name):
     return Questionnaire(name, [])
+
+
+def add_answer_to_question(question: str, answer: str, is_correct: bool) -> None:
+    answer_ids = "АБВГҐДЕЄЖЗИІЇЙКЛМНОПРСТУФХЦЧШЩЮЯ"
+    for entry in questionare.questions:
+        if entry.text == question:
+            for answer_entry in entry.answers:
+                if answer_entry.text == answer:
+                    return
+            if len(answer_ids) == len(entry.answers):
+                return
+            answer_id = answer_ids[len(entry.answers)]
+            answer_to_add = Answer(id_=answer_id,
+                                   text=answer,
+                                   is_correct=is_correct)
+            entry.answers.append(answer_to_add)
+            return
+
 
 if __name__ == '__main__':
     print("Hello world!")
