@@ -60,7 +60,7 @@ class Question:
 
 class Questionnaire:
 
-    def __init__(self, name, questions):
+    def __init__(self, name, questions: List[Question] = []):
         self.name = name
         self.questions = questions
 
@@ -108,8 +108,7 @@ def add_question(question_text):
     questionare.add_question(question_id, question_text)
 
 
-'''Створіть метод, який буде приймати імʼя та прізвище та додавати нового користувача,
-створюючи йому унікальний ідентифікатор по порядку (Якщо останній 1, то наступний 2, …)'''
+
 list_of_users = []
 
 
@@ -117,6 +116,23 @@ def add_user(first_name, last_name):
     new_user = User(first_name, last_name)
     new_user.create_id()
     list_of_users.append(new_user)
+
+
+def add_answer_to_question(question: str, answer: str, is_correct: bool) -> None:
+    answer_ids = "АБВГҐДЕЄЖЗИІЇЙКЛМНОПРСТУФХЦЧШЩЮЯ"
+    for entry in questionare.questions:
+        if entry.text == question:
+            for answer_entry in entry.answers:
+                if answer_entry.text == answer:
+                    return
+            if len(answer_ids) == len(entry.answers):
+                return
+            answer_id = answer_ids[len(entry.answers)]
+            answer_to_add = Answer(id_=answer_id,
+                                   text=answer,
+                                   is_correct=is_correct)
+            entry.answers.append(answer_to_add)
+            return
 
 
 
