@@ -71,7 +71,8 @@ class Questionnaire:
         return len(self.questions)
 
     def __str__(self) -> str:
-        questions_str = ', '.join(self.questions)
+        questions_list_str = [str(question) for question in self.questions]
+        questions_str = ', '.join(questions_list_str) if self.number_of_questions() > 0 else ''
         return f'Questionaire name: {self.name}, Questions: {questions_str}'
     
     def __repr__(self) -> str:
@@ -100,7 +101,11 @@ class User:
         return f'First name - {self.first_name}, last name - {self.last_name}, id - {self._id} '
 
 
-questionare = Questionnaire('Hello', [])
+
+def create_questionnaire(name):
+    return Questionnaire(name, [])
+
+questionare = create_questionnaire('Hello')
 
 def add_question(question_text):
     question_id = questionare.number_of_questions() + 1
@@ -124,6 +129,5 @@ def add_answer_to_question(question: str, answer: str, is_correct: bool) -> None
             return
 
 
-
 if __name__ == '__main__':
-    print("Hello world!")
+    print('Hello!')
